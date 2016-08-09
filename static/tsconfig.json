@@ -11,9 +11,5 @@
     "exclude": [
         "node_modules",
         "dist"
-    ],
-    "files": [
-        "./typings/index.d.ts",
-        "./src/app.tsx"
     ]
 }
