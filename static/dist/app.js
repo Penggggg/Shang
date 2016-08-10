@@ -24132,6 +24132,7 @@
 	    }
 	    Todo.prototype.render = function () {
 	        var store = this.props.store;
+	        ;
 	        return (React.createElement("div", null, store.report, React.createElement("ul", null, store.todos.map(function (todo, i) { return React.createElement(TodoItem, {todo: todo, key: i}); })), React.createElement("small", null, "double-click to edit"), React.createElement("button", {onClick: this.handleAdd}, "add")));
 	    };
 	    Todo = __decorate([
@@ -24153,7 +24154,6 @@
 	        this.onRename = function () {
 	            var todo = _this.props.todo;
 	            todo.task = prompt("Task name", todo.task) || todo.task;
-	            console.log(todo.task);
 	        };
 	    }
 	    TodoItem.prototype.render = function () {
@@ -24183,16 +24183,16 @@
 	    function TodoStore() {
 	        this.todos = [];
 	    }
-	    Object.defineProperty(TodoStore.prototype, "completedTodosCount", {
+	    Object.defineProperty(TodoStore.prototype, "report", {
 	        get: function () {
-	            return this.todos.filter(function (todo) { return todo.completed === true; }).length;
+	            return "Process: " + this.completedTodosCount + "/" + this.todos.length;
 	        },
 	        enumerable: true,
 	        configurable: true
 	    });
-	    Object.defineProperty(TodoStore.prototype, "report", {
+	    Object.defineProperty(TodoStore.prototype, "completedTodosCount", {
 	        get: function () {
-	            return "Process: " + this.completedTodosCount + "/" + this.todos.length;
+	            return this.todos.filter(function (todo) { return todo.completed === true; }).length;
 	        },
 	        enumerable: true,
 	        configurable: true
@@ -24209,16 +24209,17 @@
 	    ], TodoStore.prototype, "todos", void 0);
 	    __decorate([
 	        mobx_1.computed
-	    ], TodoStore.prototype, "completedTodosCount", null);
+	    ], TodoStore.prototype, "report", null);
 	    __decorate([
 	        mobx_1.computed
-	    ], TodoStore.prototype, "report", null);
+	    ], TodoStore.prototype, "completedTodosCount", null);
 	    __decorate([
 	        mobx_1.action
 	    ], TodoStore.prototype, "addTodo", null);
 	    return TodoStore;
 	}());
 	exports.TodoStore$ = new TodoStore();
+	console.log(exports.TodoStore$);
 
 
 /***/ }

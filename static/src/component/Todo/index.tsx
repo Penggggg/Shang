@@ -1,14 +1,16 @@
 import * as React from 'react';
 import { observer } from 'mobx-react';
-import { todoItemITF } from '../../interface/todo.tsx';
+import { todoItemITF, todoStoreITF, TodoItemComponentPropsITF, TodoComponentPropsITF } from '../../interface/todo.tsx';
+
+
 
 @observer
-export default class Todo extends React.Component<any, any> {
+export default class Todo extends React.Component<TodoComponentPropsITF, any> {
     constructor(){
         super()
     }
     render() {
-        let { store } = this.props;
+        let { store } = this.props;;
         return (
             <div>
                 { store.report }
@@ -32,8 +34,9 @@ export default class Todo extends React.Component<any, any> {
     }
 }
 
+
 @observer
-class TodoItem extends React.Component<any, any> {
+class TodoItem extends React.Component<TodoItemComponentPropsITF, any> {
     constructor() {
         super()
     }
@@ -54,6 +57,5 @@ class TodoItem extends React.Component<any, any> {
     onRename = () => {
         let { todo } = this.props;
         todo.task = prompt(`Task name`, todo.task) || todo.task ;
-        console.log(todo.task);
     }
 }

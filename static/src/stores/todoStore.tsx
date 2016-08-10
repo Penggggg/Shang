@@ -1,20 +1,20 @@
 import { observable, computed, autorun, action } from 'mobx';
-import { todoItemITF } from '../interface/todo.tsx';
+import { todoItemITF, todoStoreITF } from '../interface/todo.tsx';
 
-class TodoStore {
+class TodoStore implements todoStoreITF {
     @observable todos: todoItemITF[] = [];
     constructor() {
 
+    }
+
+    @computed get report(): string{
+        return `Process: ${this.completedTodosCount}/${this.todos.length}`
     }
 
     @computed get completedTodosCount():number {
         return this.todos.filter(
             todo => todo.completed === true
         ).length;
-    }
-
-    @computed get report():string{
-        return `Process: ${this.completedTodosCount}/${this.todos.length}`
     }
 
     @action addTodo(task: string) {
@@ -26,3 +26,4 @@ class TodoStore {
     }
 }
 export const TodoStore$ = new TodoStore();
+console.log(TodoStore$);
