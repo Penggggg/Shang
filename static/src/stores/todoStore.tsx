@@ -26,4 +26,3 @@ class TodoStore implements todoStoreITF {
     }
 }
 export const TodoStore$ = new TodoStore();
-console.log(TodoStore$);

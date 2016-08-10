@@ -2,13 +2,12 @@ import * as React from 'react';
 import { observer } from 'mobx-react';
 import { todoItemITF, todoStoreITF, TodoItemComponentPropsITF, TodoComponentPropsITF } from '../../interface/todo.tsx';
 
-
-
 @observer
 export default class Todo extends React.Component<TodoComponentPropsITF, any> {
     constructor(){
         super()
     }
+
     render() {
         let { store } = this.props;;
         return (
@@ -34,12 +33,12 @@ export default class Todo extends React.Component<TodoComponentPropsITF, any> {
     }
 }
 
-
 @observer
 class TodoItem extends React.Component<TodoItemComponentPropsITF, any> {
     constructor() {
         super()
     }
+
     render() {
         let { todo } = this.props;
         return (
